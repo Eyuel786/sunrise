@@ -9,16 +9,13 @@ import { TABS } from "../shared/TABS";
 
 
 const MyAppBar = styled(AppBar)(({ theme }) => ({
-    background: 'transparent',
-    padding: '1rem 7rem',
+    background: '#fff',
+    opacity: 0.8,
+    padding: '1rem 11rem',
     boxShadow: 'none',
     [theme.breakpoints.down('md')]: {
         padding: '1rem'
     }
-}));
-
-const MainContainer = styled('div')(() => ({
-    minHeight: '100vh'
 }));
 
 const Logo = styled(Box)(() => ({
@@ -55,7 +52,7 @@ function Navbar() {
     }, [router]);
 
     return (
-        <MainContainer>
+        <>
             <MyAppBar>
                 <Toolbar
                     disableGutters>
@@ -95,7 +92,8 @@ function Navbar() {
                     {!matchesMd && <MyDrawer />}
                 </Toolbar>
             </MyAppBar>
-        </MainContainer>
+            {/* <Toolbar sx={{ my: '1rem' }} /> */}
+        </>
     );
 }
 

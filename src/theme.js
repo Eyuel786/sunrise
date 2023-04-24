@@ -30,8 +30,9 @@ const theme = createTheme({
       styleOverrides: {
         root: ({ ownerState }) => ({
           borderRadius: 50,
+          padding: '11px 33px',
+          fontSize: '1rem',
           ...(ownerState.variant === 'outlined' && {
-            padding: '11px 33px',
             color: '#000',
             border: '2px solid #000',
             '&:hover': {
@@ -40,8 +41,11 @@ const theme = createTheme({
               border: '2px solid #000',
               transition: theme.transitions.create('all', {
                 duration: theme.transitions.duration.standard
-              })
+              }),
             }
+          }),
+          ...(ownerState.variant === 'contained' && {
+            color: '#fff'
           })
         })
       }
