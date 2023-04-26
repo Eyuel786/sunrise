@@ -20,7 +20,7 @@ const Slide = styled('div', {
     position: 'relative',
     '& img': {
         transformOrigin,
-        transition: 'transform 8s ease',
+        transition: 'transform 5s ease',
         transform: currentSlide ? 'scale(1.1)' : '',
     }
 }));
@@ -67,33 +67,24 @@ const SmallText = styled(Typography)(() => ({
 
 const SLIDES = [
     {
-        bigText:
-            <>
-                From Simple <span>Procedures</span> to Complex <span>Surgeries</span>
-            </>,
+        bigText: <>From Simple <span>Procedures</span> to Complex <span>Surgeries</span></>,
         smallText: 'With best facilities and better equipments, you are in safe hands',
         background: 'to right',
         image: '/01.jpg',
     },
     {
-        bigText:
-            <>
-                Make your <span>Dental</span> Experience a lot <span>Brighter</span>
-            </>,
+        bigText: <>Make your <span>Dental</span> Experience a lot <span>Brighter</span></>,
         smallText: 'With best facilities and better equipments, you are in safe hands',
         background: 'to left',
         image: '/02.jpg'
     },
     {
-        bigText:
-            <>
-                Expertise in Major <span>Dental Procedures</span>
-            </>,
+        bigText: <>Expertise in Major <span>Dental Procedures</span></>,
         smallText: 'With best facilities and better equipments, you are in safe hands',
         background: 'to right',
         image: '/03.jpg',
     }
-]
+];
 
 function Home() {
 
@@ -110,7 +101,7 @@ function Home() {
         pauseOnFocus: false,
         cssEase: 'ease',
         speed: 1000,
-        autoplaySpeed: 8000,
+        autoplaySpeed: 5000,
         beforeChange: (current, next) => setSlideIndex(next)
     }
 

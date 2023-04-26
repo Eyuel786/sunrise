@@ -20,6 +20,9 @@ const theme = createTheme({
     error: {
       main: red.A400,
     },
+    text: {
+      secondary: 'rgba(0,0,0,0.4)'
+    }
   },
   components: {
     MuiButton: {
@@ -53,10 +56,14 @@ const theme = createTheme({
     MuiSvgIcon: {
       styleOverrides: {
         root: {
-          color: '#000',
           stroke: '#fff',
           strokeWidth: '1px'
         }
+      }
+    },
+    MuiIconButton: {
+      defaultProps: {
+        disableRipple: true
       }
     }
   },
