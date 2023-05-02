@@ -1,9 +1,9 @@
-import Services from "../src/pages/Services";
+import ServicesPage from "../src/pages/ServicesPage";
 
 
-function ServicesPage() {
+function Services() {
 
-    return <Services />
+    return <ServicesPage />
 }
 
-export default ServicesPage;
+export default Services;

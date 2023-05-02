@@ -31,7 +31,7 @@ const SpanText = styled('span')(({ theme }) => ({
     color: theme.palette.primary.main
 }));
 
-const MyIconButton = styled(IconButton)(({ theme }) => ({
+const MyIconButton = styled(IconButton)(() => ({
     background: '#fff',
     padding: 16,
     '&:hover': {

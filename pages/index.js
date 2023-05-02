@@ -1,8 +1,8 @@
-import Home from "../src/pages/Home";
+import HomePage from "../src/pages/HomePage";
 
 
 export default function Index() {
   return (
-    <Home />
+    <HomePage />
   );
 }

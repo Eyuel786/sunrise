@@ -31,8 +31,9 @@ const theme = createTheme({
         disableElevation: true
       },
       styleOverrides: {
+        padding: '11px 33px',
+        fontSize: '1rem',
         root: ({ ownerState }) => ({
-          borderRadius: 50,
           padding: '11px 33px',
           fontSize: '1rem',
           ...(ownerState.variant === 'outlined' && {
@@ -40,15 +41,15 @@ const theme = createTheme({
             border: '2px solid #000',
             '&:hover': {
               color: '#fff',
-              background: '#000',
-              border: '2px solid #000',
+              background: '#49beb7',
+              border: '2px solid #49beb7',
               transition: theme.transitions.create('all', {
                 duration: theme.transitions.duration.standard
               }),
             }
           }),
           ...(ownerState.variant === 'contained' && {
-            color: '#fff'
+            color: '#fff',
           })
         })
       }
@@ -71,7 +72,7 @@ const theme = createTheme({
     fontFamily: dmSans.style.fontFamily,
     allVariants: {
       textTransform: 'none'
-    }
+    },
   },
 });
 

@@ -2,9 +2,9 @@ import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 import { styled } from '@mui/material/styles';
 
+import Image from 'next/image';
 import Slider from 'react-slick';
 import { Button, Grid, Typography } from '@mui/material';
-import Image from 'next/image';
 import { useState } from 'react';
 
 
@@ -86,7 +86,7 @@ const SLIDES = [
     }
 ];
 
-function Home() {
+function HomePage() {
 
     const [slideIndex, setSlideIndex] = useState(0);
 
@@ -151,4 +151,4 @@ function Home() {
     );
 }
 
-export default Home;
+export default HomePage;
