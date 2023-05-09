@@ -102,6 +102,7 @@ function Navbar() {
                             variant='outlined'
                             component={Link}
                             href='/contact'
+                            color='secondary'
                             sx={{ ml: 'auto' }}>
                             Get in Touch
                         </MyBtn>

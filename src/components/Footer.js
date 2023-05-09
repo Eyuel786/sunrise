@@ -42,8 +42,6 @@ const MyIconButton = styled(IconButton)(() => ({
 
 function Footer() {
     const router = useRouter();
-    const theme = useTheme()
-
 
     if (router.pathname === '/')
         return <></>;

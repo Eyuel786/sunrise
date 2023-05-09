@@ -15,7 +15,7 @@ const theme = createTheme({
       main: '#49beb7',
     },
     secondary: {
-      main: '#135DE8',
+      main: '#000',
     },
     error: {
       main: red.A400,
@@ -31,25 +31,29 @@ const theme = createTheme({
         disableElevation: true
       },
       styleOverrides: {
-        padding: '11px 33px',
-        fontSize: '1rem',
-        root: ({ ownerState }) => ({
+        root: ({ ownerState, theme }) => ({
           padding: '11px 33px',
           fontSize: '1rem',
+          '&:hover': {
+            transition: theme.transitions.create('all', {
+              duration: theme.transitions.duration.standard
+            }),
+          },
           ...(ownerState.variant === 'outlined' && {
-            color: '#000',
-            border: '2px solid #000',
+            borderStyle: 'solid',
+            borderWidth: '2px',
+            borderColor: ownerState.color === 'primary' && theme.palette.primary.main ||
+              ownerState.color === 'secondary' && theme.palette.secondary.main,
             '&:hover': {
               color: '#fff',
-              background: '#49beb7',
-              border: '2px solid #49beb7',
-              transition: theme.transitions.create('all', {
-                duration: theme.transitions.duration.standard
-              }),
+              background: ownerState.color === 'primary' && theme.palette.primary.main ||
+                ownerState.color === 'secondary' && theme.palette.secondary.main,
             }
           }),
-          ...(ownerState.variant === 'contained' && {
+          ...(ownerState.variant === 'contained' &&
+            ownerState.color === 'primary' && {
             color: '#fff',
+            borderColor: theme.palette.primary.main
           })
         })
       }
@@ -73,6 +77,21 @@ const theme = createTheme({
     allVariants: {
       textTransform: 'none'
     },
+    containedBtn: {
+      color: '#000',
+      padding: '11px 33px',
+    },
+    outlinedBtn: {
+      color: '#000',
+      padding: '11px 33px',
+      fontSize: '1rem',
+      border: '2px solid #000',
+      '&:hover': {
+        color: '#fff',
+        background: '#49beb7',
+        border: '2px solid #49beb7',
+      }
+    }
   },
 });
 

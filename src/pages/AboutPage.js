@@ -1,12 +1,26 @@
-import { Button, Divider, Grid, Typography } from "@mui/material";
-import { styled, useTheme } from "@mui/material/styles";
-import { faHeadset } from "@fortawesome/free-solid-svg-icons";
+import {
+    Accordion, AccordionDetails, AccordionSummary,
+    Button, Divider, Grid, Typography
+} from "@mui/material";
+import { styled } from "@mui/material/styles";
+import { faHeadset, faKitMedical, faQuestion, faTooth } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import ArrowForwardIcon from "@mui/icons-material/ArrowForwardIosSharp";
 
 
-const MainContainer = styled('div')(() => ({
+const WelcomeSection = styled('div')(() => ({
     padding: '4rem 11.5rem',
-    minHeight: '100vh'
+    marginBottom: '6rem'
+}));
+
+const FAQSection = styled('div')(() => ({
+    padding: '4rem 11.5rem'
+}));
+
+const BlueSection = styled('div')(({ theme }) => ({
+    background: theme.palette.primary.main,
+    padding: '4rem 11.5rem',
+    marginBottom: '6rem'
 }));
 
 const TitleContainer = styled('div')(({ theme }) => ({
@@ -24,7 +38,7 @@ const HeaderContainer = styled('div')(({ theme }) => ({
     width: '19rem'
 }));
 
-const Header = styled(Typography)(({ theme }) => ({
+const Header = styled(Typography)(() => ({
     fontSize: '2rem',
     marginBottom: '0.8rem'
 }));
@@ -45,14 +59,76 @@ const MyContainer = styled(Grid)(({ theme }) => ({
     }
 }));
 
+const MyAccordionSummary = styled(AccordionSummary)(({ theme }) => ({
+    flexDirection: 'row-reverse',
+    '& .MuiAccordionSummary-expandIconWrapper.Mui-expanded': {
+        transform: 'rotate(90deg)',
+    },
+    '& .MuiAccordionSummary-content': {
+        marginLeft: theme.spacing(1),
+    },
+}));
+
+const FAQHeaderContainer = styled('div')(() => ({
+    position: 'relative',
+    marginBottom: '2rem',
+    height: '4rem'
+}));
+
+const FAQHeader = styled('div')(({ theme }) => ({
+    ...theme.typography.h4,
+    position: 'absolute',
+    left: 0,
+    top: '25%',
+    width: '100%',
+    height: '100%'
+}));
+
 const MyBtn = styled(Button)(({ theme }) => ({
-    color: theme.palette.primary.main,
-    border: `2px solid ${theme.palette.primary.main}`
+    color: '#fff',
+    border: '2px solid #fff',
+    textTransform: 'uppercase',
+    marginTop: '4rem',
+    '&:hover': {
+        background: '#fff',
+        border: `2px solid ${theme.palette.primary.main}`,
+        color: theme.palette.primary.main,
+        transition: theme.transitions.create('all', {
+            duration: theme.transitions.duration.standard
+        }),
+    }
 }));
 
 
+const FAQs = [
+    {
+        question: 'What type of Dental care is best for you?',
+        answer: 'Suspendisse semper, neque sit amet sagittis molestie, enim urna efficitur ligula, ' +
+            'eu dapibus nibh enim a massa. Cras vel orci ut velit vehicula commodo sed eu turpis. ' +
+            'Fusce luctus bibendum mauris iaculis gravida'
+    },
+    {
+        question: 'How to protect the tooth?',
+        answer: 'Cras commodo mi ligula, ut egestas ipsum dapibus in. In eu erat metus. ' +
+            'Nullam tempus rhoncus viverra. Curabitur urna diam, porta ut pharetra at, volutpat dictum nisi. ' +
+            'Aliquam non est ut urna vulputate pulvinar vel ac ipsum'
+    },
+    {
+        question: 'How often should one floss the teeth',
+        answer: 'Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. ' +
+            'Praesent molestie risus ut urna fermentum mollis. In ante mauris, ullamcorper vel scelerisque eu, dapibus sit amet odio'
+    },
+    {
+        question: 'How smoking can affect your teeth',
+        answer: 'Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. ' +
+            'Donec vitae urna neque.Cras at luctus ligula, fringilla ultrices arcu.Donec quis pellentesque quam. ' +
+            'Donec at augue sed mauris tempus ultricies'
+    }
+];
+
+
 function AboutPage() {
-    const theme = useTheme();
+
 
     return (
         <>
@@ -62,7 +138,8 @@ function AboutPage() {
                     About
                 </Title>
             </TitleContainer>
-            <MainContainer>
+
+            <WelcomeSection>
                 <Grid
                     container
                     columnSpacing={6}>
@@ -117,10 +194,11 @@ function AboutPage() {
                                     sx={{ mr: 4 }}>
                                     Know Your Facts
                                 </Button>
-                                <MyBtn
-                                    variant='outlined'>
+                                <Button
+                                    variant='outlined'
+                                    color='secondary'>
                                     Talk to Us
-                                </MyBtn>
+                                </Button>
                             </Grid>
                         </Grid>
                     </Grid>
@@ -137,8 +215,7 @@ function AboutPage() {
                                 <FontAwesomeIcon
                                     icon={faHeadset}
                                     color='rgba(73, 190, 183, 0.7)'
-                                    width={74}
-                                    height={74} />
+                                    size='5x' />
                             </Grid>
                             <Grid
                                 item
@@ -160,7 +237,147 @@ function AboutPage() {
                         </MyContainer>
                     </Grid>
                 </Grid>
-            </MainContainer>
+            </WelcomeSection>
+
+            <BlueSection>
+                <Grid
+                    container
+                    direction='column'
+                    spacing={5}
+                    sx={{ color: '#fff' }}>
+                    <Grid item>
+                        <Grid
+                            container
+                            justifyContent='center'
+                            spacing={12}>
+                            <Grid item
+                                sx={{ textAlign: 'center' }}
+                                lg={6}>
+                                <FontAwesomeIcon
+                                    size='4x'
+                                    icon={faTooth}
+                                    color='#fff'
+                                    style={{ marginBottom: '1rem' }} />
+                                <Typography
+                                    sx={{ fontSize: '1.8rem' }}>
+                                    Are you {' '}
+                                    <span style={{ fontWeight: 700 }}>
+                                        Losing your Teeth?
+                                    </span>
+                                </Typography>
+                                <Typography
+                                    variant='subtitle1'>
+                                    For existing dental problems
+                                </Typography>
+                                <Typography
+                                    sx={{
+                                        mt: '2rem',
+                                        fontSize: '1.2rem',
+                                        lineHeight: 1.5
+                                    }}>
+                                    Lorem ipsum dolor sit amet, consectetur adipis cing elit.
+                                    Nullam id arcu tortor. Sed eget sit ame egestas, cursus felis quis, vestibulum.
+                                </Typography>
+                            </Grid>
+                            <Grid item
+                                sx={{ textAlign: 'center' }}
+                                lg={6}>
+                                <FontAwesomeIcon
+                                    size='4x'
+                                    icon={faKitMedical}
+                                    color="#fff"
+                                    style={{ marginBottom: '1rem' }} />
+                                <Typography
+                                    sx={{ fontSize: '1.8rem' }}>
+                                    Need a {' '}
+                                    <span style={{ fontWeight: 700 }}>
+                                        Solution?
+                                    </span>
+                                </Typography>
+                                <Typography
+                                    variant='subtitle1'>
+                                    For existing dental problems
+                                </Typography>
+                                <Typography
+                                    sx={{
+                                        mt: '2rem',
+                                        fontSize: '1.2rem',
+                                        lineHeight: 1.5
+                                    }}>
+                                    Lorem ipsum dolor sit amet, consectetur adipis cing elit.
+                                    Nullam id arcu tortor. Sed eget sit ame egestas, cursus felis quis, vestibulum.
+                                </Typography>
+                            </Grid>
+                        </Grid>
+                    </Grid>
+                    <Grid item>
+                        <Divider
+                            sx={{ background: 'rgba(255,255,255,0.7)' }} />
+                    </Grid>
+                    <Grid item
+                        sx={{ textAlign: 'center' }}>
+                        <Typography
+                            sx={{ fontSize: '1.8rem' }}>
+                            You are always safe with us. {' '}
+                            <span style={{ fontWeight: 700 }}>
+                                We are ready to help any time
+                            </span>
+                        </Typography>
+                        <Typography
+                            variant='subtitle1'>
+                            Lorem ipsum dolor sit amet, consectetur adipis cing elit.
+                            Nullam id arcu tortor. Sed eget sit ame egestas, cursus felis quis, vestibulum.
+                        </Typography>
+                        <MyBtn
+                            variant='outlined'>
+                            Fix an Appointment with Us
+                        </MyBtn>
+                    </Grid>
+                </Grid>
+            </BlueSection>
+
+            <FAQSection>
+                <FAQHeaderContainer>
+                    <FontAwesomeIcon
+                        icon={faQuestion}
+                        size='5x'
+                        style={{ transform: 'rotate(30deg)' }}
+                        opacity={.1} />
+                    <FAQHeader>
+                        Why we are the best? FAQs
+                    </FAQHeader>
+                </FAQHeaderContainer>
+                <Grid
+                    container
+                    sx={{ mb: '6rem' }}
+                    columnSpacing={14}>
+                    <Grid
+                        item
+                        lg={7}>
+                        {FAQs.map(faq => (
+                            <Accordion
+                                disableGutters
+                                elevation={0}>
+                                <MyAccordionSummary
+                                    expandIcon={
+                                        <ArrowForwardIcon sx={{ fontSize: "0.9rem" }} />
+                                    }>
+                                    <Typography
+                                        sx={{ fontSize: '1.1rem' }}>
+                                        {faq.question}
+                                    </Typography>
+                                </MyAccordionSummary>
+                                <AccordionDetails>
+                                    <Typography
+                                        color='text.secondary'>
+                                        {faq.answer}
+                                    </Typography>
+                                </AccordionDetails>
+                            </Accordion>
+                        ))}
+                    </Grid>
+                </Grid>
+            </FAQSection>
         </>
     );
 }
