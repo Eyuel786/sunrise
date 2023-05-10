@@ -1,5 +1,6 @@
 import {
     Button, Card, CardContent, CardMedia, Fade, Grid,
+    Grow,
     IconButton, Paper, Slide, Stack, TextField, Typography
 } from "@mui/material";
 import { styled, useTheme } from "@mui/material/styles";
@@ -102,13 +103,12 @@ const LOCATIONS = [
 
 
 function ContactPage() {
-    const theme = useTheme();
 
     const [name, setName] = useState('');
     const [phone, setPhone] = useState('');
     const [question, setQuestion] = useState('');
 
-    const [contactFormRef, contactFormInView] = useInView({ triggerOnce: true });
+    const [contactFormRef, contactFormInView] = useInView({ triggerOnce: true, threshold: .6 });
 
     return (
         <>
@@ -120,11 +120,10 @@ function ContactPage() {
             </TitleContainer>
 
             <LocationsSection>
-                <MySlide
+                <Slide
                     in={true}
                     direction='down'
-                    timeout={1000}
-                    delay={0}>
+                    timeout={1000}>
                     <HeadingContainer>
                         <BackgroundIcon />
                         <HeadingContent>
@@ -146,7 +145,7 @@ function ContactPage() {
                             </Typography>
                         </HeadingContent>
                     </HeadingContainer>
-                </MySlide>
+                </Slide>
                 <Grid
                     container
                     columnSpacing={4}>
@@ -188,7 +187,7 @@ function ContactPage() {
             </LocationsSection>
 
             <ContactFormSection>
-                <Fade
+                <Grow
                     in={contactFormInView}
                     timeout={1000}>
                     <MyPaper
@@ -295,7 +294,7 @@ function ContactPage() {
                             </Grid>
                         </Grid>
                     </MyPaper>
-                </Fade>
+                </Grow>
             </ContactFormSection>
         </>
     );

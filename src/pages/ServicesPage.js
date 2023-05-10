@@ -167,11 +167,12 @@ const GENEREAL_SERVICES = [
 
 function Services() {
     const theme = useTheme();
-    const [btnRef, btnInView] = useInView({ triggerOnce: true });
-    const [gs1Ref, gs1Inview] = useInView({ triggerOnce: true });
-    const [gs2Ref, gs2Inview] = useInView({ triggerOnce: true });
-    const [gs3Ref, gs3Inview] = useInView({ triggerOnce: true });
-    const [gs4Ref, gs4Inview] = useInView({ triggerOnce: true });
+    const [btnRef, btnInView] = useInView({ triggerOnce: true, threshold: .4 });
+    const [gs1Ref, gs1Inview] = useInView({ triggerOnce: true, threshold: .4 });
+    const [gs2Ref, gs2Inview] = useInView({ triggerOnce: true, threshold: .4 });
+    const [gs3Ref, gs3Inview] = useInView({ triggerOnce: true, threshold: .4 });
+    const [gs4Ref, gs4Inview] = useInView({ triggerOnce: true, threshold: .4 });
+    const [blueSecRef, blueSecInView] = useInView({ triggerOnce: true, threshold: .5 });
 
     const gs = [
         { gsRef: gs1Ref, gsInView: gs1Inview },
@@ -327,85 +328,93 @@ function Services() {
                 </MyBtnContainer>
             </SpecificServicesSection>
 
-            <BlueSection>
-                <Typography
-                    variant='h4'
-                    align='center'
-                    sx={{ mb: 5 }}>
-                    Dentistry is restoring smile in people
-                </Typography>
-                <Grid
-                    container
-                    justifyContent='center'
-                    spacing={6}>
-                    <Grid
-                        item
-                        lg={4}>
+            <div
+                ref={blueSecRef}>
+                <Slide
+                    direction='up'
+                    in={blueSecInView}
+                    timeout={1000}>
+                    <BlueSection>
                         <Typography
-                            variant='h2'
+                            variant='h4'
                             align='center'
-                            sx={{ mb: 4, color: '#000', fontWeight: 700 }}>
-                            650
+                            sx={{ mb: 5 }}>
+                            Dentistry is restoring smile in people
                         </Typography>
-                        <Typography
-                            align='center'
-                            variant='h5'
-                            sx={{ mb: 3 }}>
-                            650+ Cosmetic Surgeries
-                        </Typography>
-                        <Typography
-                            align='center'
-                            sx={{ lineHeight: 1.6 }}>
-                            Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo.
-                            Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat
-                        </Typography>
-                    </Grid>
-                    <Grid
-                        item
-                        lg={4}>
-                        <Typography
-                            variant='h2'
-                            align='center'
-                            sx={{ mb: 4, color: '#000', fontWeight: 700 }}>
-                            250
-                        </Typography>
-                        <Typography
-                            align='center'
-                            variant='h5'
-                            sx={{ mb: 3 }}>
-                            250+ Root Canal Treatments
-                        </Typography>
-                        <Typography
-                            align='center'
-                            sx={{ lineHeight: 1.6 }}>
-                            Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo.
-                            Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat
-                        </Typography>
-                    </Grid>
-                    <Grid
-                        item
-                        lg={4}>
-                        <Typography
-                            variant='h2'
-                            align='center'
-                            sx={{ mb: 4, color: '#000', fontWeight: 700 }}>
-                            150
-                        </Typography>
-                        <Typography
-                            align='center'
-                            variant='h5'
-                            sx={{ mb: 3 }}>
-                            150+ Root Canal Treatments
-                        </Typography>
-                        <Typography
-                            align='center'
-                            sx={{ lineHeight: 1.6 }}>
-                            Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo.
-                            Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat
-                        </Typography>
-                    </Grid>
-                </Grid>
-            </BlueSection>
+                        <Grid
+                            container
+                            justifyContent='center'
+                            spacing={6}>
+                            <Grid
+                                item
+                                lg={4}>
+                                <Typography
+                                    variant='h2'
+                                    align='center'
+                                    sx={{ mb: 4, color: '#000', fontWeight: 700 }}>
+                                    650
+                                </Typography>
+                                <Typography
+                                    align='center'
+                                    variant='h5'
+                                    sx={{ mb: 3 }}>
+                                    650+ Cosmetic Surgeries
+                                </Typography>
+                                <Typography
+                                    align='center'
+                                    sx={{ lineHeight: 1.6 }}>
+                                    Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo.
+                                    Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat
+                                </Typography>
+                            </Grid>
+                            <Grid
+                                item
+                                lg={4}>
+                                <Typography
+                                    variant='h2'
+                                    align='center'
+                                    sx={{ mb: 4, color: '#000', fontWeight: 700 }}>
+                                    250
+                                </Typography>
+                                <Typography
+                                    align='center'
+                                    variant='h5'
+                                    sx={{ mb: 3 }}>
+                                    250+ Root Canal Treatments
+                                </Typography>
+                                <Typography
+                                    align='center'
+                                    sx={{ lineHeight: 1.6 }}>
+                                    Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo.
+                                    Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat
+                                </Typography>
+                            </Grid>
+                            <Grid
+                                item
+                                lg={4}>
+                                <Typography
+                                    variant='h2'
+                                    align='center'
+                                    sx={{ mb: 4, color: '#000', fontWeight: 700 }}>
+                                    150
+                                </Typography>
+                                <Typography
+                                    align='center'
+                                    variant='h5'
+                                    sx={{ mb: 3 }}>
+                                    150+ Root Canal Treatments
+                                </Typography>
+                                <Typography
+                                    align='center'
+                                    sx={{ lineHeight: 1.6 }}>
+                                    Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo.
+                                    Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat
+                                </Typography>
+                            </Grid>
+                        </Grid>
+                    </BlueSection>
+                </Slide>
+            </div>
 
             <Grid
                 container
